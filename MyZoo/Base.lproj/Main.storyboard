@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Animal Classification View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AnimalClassificationViewController" customModule="MyZoo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="trW-dW-mHl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgv-fr-iny">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem systemItem="camera" id="QWt-YG-h9H">
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="cameraBtnWasPressed:" destination="BYZ-38-t0r" id="6Hu-Ai-2CE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </toolbar>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ykR-sR-p04" customClass="RoundedVisualEffectView" customModule="MyZoo" customModuleProvider="target">
+                                <rect key="frame" x="20" y="523" width="335" height="80"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6o3-NM-N2Q">
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose an image below" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="8lh-BP-Pse">
+                                            <rect key="frame" x="0.0" y="0.0" width="335" height="80"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="8lh-BP-Pse" secondAttribute="bottom" id="9nx-Am-9mc"/>
+                                        <constraint firstItem="8lh-BP-Pse" firstAttribute="top" secondItem="6o3-NM-N2Q" secondAttribute="top" id="Q1F-93-aUi"/>
+                                        <constraint firstAttribute="trailing" secondItem="8lh-BP-Pse" secondAttribute="trailing" id="SdC-vL-WTE"/>
+                                        <constraint firstItem="8lh-BP-Pse" firstAttribute="leading" secondItem="6o3-NM-N2Q" secondAttribute="leading" id="nW2-I3-m3n"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="YfU-dP-RGU"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="trW-dW-mHl" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="2gz-dl-cJy"/>
+                            <constraint firstItem="dgv-fr-iny" firstAttribute="top" secondItem="ykR-sR-p04" secondAttribute="bottom" constant="20" id="4yQ-dY-gT8"/>
+                            <constraint firstItem="dgv-fr-iny" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IVu-Rx-zHB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ykR-sR-p04" secondAttribute="trailing" constant="20" id="JLf-NS-U6X"/>
+                            <constraint firstItem="ykR-sR-p04" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="M1l-Um-Cg0"/>
+                            <constraint firstItem="dgv-fr-iny" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QTM-GM-2xs"/>
+                            <constraint firstItem="trW-dW-mHl" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SlB-nH-xb4"/>
+                            <constraint firstItem="trW-dW-mHl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hSc-xy-Xph"/>
+                            <constraint firstItem="trW-dW-mHl" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ibf-qV-3r7"/>
+                            <constraint firstItem="dgv-fr-iny" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="p8r-rq-Gqk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="cameraBtn" destination="QWt-YG-h9H" id="rAH-Qn-Ysy"/>
+                        <outlet property="classificationLbl" destination="8lh-BP-Pse" id="Xnj-H2-UNe"/>
+                        <outlet property="imageView" destination="trW-dW-mHl" id="maQ-ws-Aq1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+</document>
