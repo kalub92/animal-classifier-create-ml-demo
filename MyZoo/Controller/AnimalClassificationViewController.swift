@@ -49,7 +49,7 @@ class AnimalClassificationViewController: UIViewController {
     func processClassifications(for request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
             guard let classifications = request.results as? [VNClassificationObservation] else {
-                self.classificationLbl.text = "Unable to classify image.\n\(error!.localizedDescription)"
+                self.classificationLbl.text = "Unable to classify image.\n\(error?.localizedDescription ?? "Error")"
                 return
             }
             
