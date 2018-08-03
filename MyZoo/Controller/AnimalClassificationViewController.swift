@@ -16,7 +16,6 @@ class AnimalClassificationViewController: UIViewController {
     @IBOutlet weak var classificationLbl: UILabel!
     @IBOutlet weak var cameraBtn: UIBarButtonItem!
     
-    /// - Tag: MLModelSetup
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
             let model = try VNCoreMLModel(for: AnimalClassifier().model)
@@ -31,7 +30,6 @@ class AnimalClassificationViewController: UIViewController {
         }
     }()
     
-    /// - Tag: PerformRequests
     func updateClassifications(for image: UIImage) {
         classificationLbl.text = "Classifying..."
         
@@ -48,15 +46,12 @@ class AnimalClassificationViewController: UIViewController {
         }
     }
     
-    /// Updates the UI with the results of the classification.
-    /// - Tag: ProcessClassifications
     func processClassifications(for request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
-            guard let results = request.results else {
+            guard let classifications = request.results as? [VNClassificationObservation] else {
                 self.classificationLbl.text = "Unable to classify image.\n\(error!.localizedDescription)"
                 return
             }
-            let classifications = results as! [VNClassificationObservation]
             
             if classifications.isEmpty {
                 self.classificationLbl.text = "Nothing recognized."
@@ -100,13 +95,11 @@ class AnimalClassificationViewController: UIViewController {
 }
 
 extension AnimalClassificationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    // MARK: - Handling Image Picker Selection
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         
-        // We always expect `imagePickerController(:didFinishPickingMediaWithInfo:)` to supply the original image.
-        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { fatalError("No image returned") }
         imageView.image = image
         updateClassifications(for: image)
     }
