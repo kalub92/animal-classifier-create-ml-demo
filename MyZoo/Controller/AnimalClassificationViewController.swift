@@ -33,8 +33,10 @@ class AnimalClassificationViewController: UIViewController {
     func updateClassifications(for image: UIImage) {
         classificationLbl.text = "Classifying..."
         
-        guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue)) else { fatalError("Unable to create \(CGImagePropertyOrientation.self) from \(image).") }
-        guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
+        guard let orientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue)), let ciImage = CIImage(image: image) else {
+            displayError()
+            return
+        }
         
         DispatchQueue.global().async {
             let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
@@ -63,6 +65,10 @@ class AnimalClassificationViewController: UIViewController {
                 self.classificationLbl.text = "Classification:\n" + descriptions.joined(separator: "\n")
             }
         }
+    }
+    
+    func displayError() {
+        classificationLbl.text = "Something went wrong...\n Please try again."
     }
     
     @IBAction func cameraBtnWasPressed(_ sender: Any) {
