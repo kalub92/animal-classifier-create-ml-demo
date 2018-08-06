@@ -38,7 +38,7 @@ class AnimalClassificationViewController: UIViewController {
             return
         }
         
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .userInteractive).async {
             let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
             do {
                 try handler.perform([self.classificationRequest])
